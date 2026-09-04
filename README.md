@@ -36,8 +36,8 @@ pharmaceutical_properties_and_environmental_fate/
 ├── README.md
 ├── SM_2.xlsx
 ├── analysis_pipeline_2026.R
-├── analysis_pipeline_description...
-└── svg/
+├── analysis_pipeline_description
+
 
 ```
 
