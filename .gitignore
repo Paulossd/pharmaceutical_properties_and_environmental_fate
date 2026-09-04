@@ -1,0 +1,32 @@
+# R history and workspace files
+.Rhistory
+.RData
+.RDataTmp
+.Ruserdata
+
+# RStudio project files
+.Rproj.user/
+*.Rproj
+
+# Generated figures
+figures/
+
+# Generated Excel outputs
+SM_2_encoding_audit.xlsx
+SM_2_generated.xlsx
+Table_SM_2.4.xlsx
+Table_SM_2.5.xlsx
+Table_SM_2.6.xlsx
+Table_SM_2.7.xlsx
+Table_SM_2.9.xlsx
+Table_SM_2.9_a.xlsx
+Table_SM_2.10.xlsx
+Table_SM_2.11.xlsx
+Table_SM_2.1_a.xlsx
+SM_3_properties.xlsx
+SM_4_fate.xlsx
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
