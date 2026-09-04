@@ -27,12 +27,17 @@ The workflow includes:
 
 ## Repository contents
 
-LICENSE-data.md
-LICENSE.md
-README.md
-SM_2.xlsx
-analysis_pipeline_2026.R
-analysis_pipeline_description
+pharmaceutical_properties_and_environmental_fate/
+│
+├── .gitignore
+├── CITATION.cff
+├── LICENSE.md
+├── LICENSE-data.md
+├── README.md
+├── SM_2.xlsx
+├── analysis_pipeline_2026.R
+├── analysis_pipeline_description...
+└── svg/
 
 ```
 
