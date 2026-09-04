@@ -163,9 +163,7 @@ A complete execution generates the following analytical products:
 
 | File                       | Content                                                                                                                                      |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| SM_2_encoding_audit.xlsx| Log of Unicode-dash, non-breaking-space, and thousands-separator normalisations applied toSM_2.xlsxbefore harmonisation | |Table_SM_2.5.xlsx       | Harmonised physicochemical properties derived fromTable_SM_2.2, including README, cell-level harmonisation audit, and declared parameters |
-
-Before harmonisation, cell text is normalised for Unicode dashes, non-breaking spaces, and thousands separators; every change is recorded in SM_2_encoding_audit.xlsx
+| `SM_2_encoding_audit.xlsx` | Log of Unicode-dash, non-breaking-space, and thousands-separator normalisations applied to `SM_2.xlsx` before harmonisation |
 
 
 | `Table_SM_2.5.xlsx`        | Harmonised physicochemical properties derived from `Table_SM_2.2`, including README, cell-level harmonisation audit, and declared parameters |
@@ -185,7 +183,7 @@ Before harmonisation, cell text is normalised for Unicode dashes, non-breaking s
 
 ## Methodological summary
 
-The pipeline applies the predefined harmonisation and censoring rules described in Section 2.3 of the manuscript.
+The pipeline applies the predefined harmonisation, censoring, aggregation, screening and statistical procedures described in Sections 2.3–2.8 of the manuscript.
 
 Non-standard reported values are converted to analysis-ready numeric representations according to the declared rules. These include detections, reported ranges, approximate values, and censored observations.
 
