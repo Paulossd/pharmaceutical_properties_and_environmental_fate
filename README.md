@@ -27,12 +27,13 @@ The workflow includes:
 
 ## Repository contents
 
-```text
-.
-├── analysis_pipeline_2026.R    # complete annotated analysis pipeline
-├── README.md                   # repository documentation
-├── LICENSE                     # MIT License for code
-└── LICENSE-data.md             # data licensing and third-party data terms
+LICENSE-data.md
+LICENSE.md
+README.md
+SM_2.xlsx
+analysis_pipeline_2026.R
+analysis_pipeline_description
+
 ```
 
 The complete input workbook `SM_2.xlsx` is **not publicly included in the repository** because it contains third-party-derived information subject to source-specific licensing and redistribution conditions.
