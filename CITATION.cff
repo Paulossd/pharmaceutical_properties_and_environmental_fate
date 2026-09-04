@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: "Pharmaceutical compounds at the surface water–groundwater interface: a systematic evidence synthesis of their properties and fate at the hyporheic zone"
+message: "If you use the software or computational workflows in this repository, please cite this repository and the associated publication."
+type: software
+authors:
+  - family-names: Tufoni
+    given-names: Paolo
+  - family-names: Nunes
+    given-names: Luís M.
+repository-code: "https://github.com/Paulossd/pharmaceutical_properties_and_environmental_fate"
+license: MIT
+version: "1.0.0"
