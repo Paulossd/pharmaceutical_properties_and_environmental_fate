@@ -5,8 +5,11 @@ type: software
 authors:
   - family-names: Tufoni
     given-names: Paolo
-  - family-names: Nunes
-    given-names: Luís M.
+  - family-names: Monteiro
+    given-names: José Paulo
+- family-names: Nunes
+    given-names: Luís Miguel
+
 repository-code: "https://github.com/Paulossd/pharmaceutical_properties_and_environmental_fate"
 license: MIT
 version: "1.0.0"
