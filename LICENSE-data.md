@@ -16,7 +16,7 @@ The inclusion of a third-party value, reference, or database-derived datum in an
 
 Source and provenance information are retained in the corresponding data tables and documentation wherever applicable. Users are responsible for determining and complying with the terms governing any third-party material before reusing or redistributing it.
 
-## Complete SM_2 dataset
+## The SM_2 dataset
 
 SM_2.xlsx is included in this repository, containing the reference table, the harmonised datasets, and the derived analytical tables. The raw extracted records (Tables SM_2.2–SM_2.3), which incorporate values derived from third-party sources subject to source-specific terms, are provided as placeholders; the complete raw workbook may be provided by the authors upon reasonable request, subject to applicable copyright, database rights, licensing terms, and redistribution conditions.
 
