@@ -4,7 +4,7 @@
 
 Unless otherwise stated, original data compilations, harmonised datasets, derived analytical outputs, metadata, and other original data products created by Paolo Tufoni and Luís M. Nunes and explicitly identified as author-generated material in this repository are made available under the **Creative Commons Attribution 4.0 International License (CC BY 4.0)**.
 
-Copyright © 2026 Paolo Tufoni and Luís M. Nunes.
+Copyright © 2026 Paolo Tufoni, José Paulo Monteiro and Luís Miguel Nunes.
 
 The CC BY 4.0 license applies only to the authors' original contributions. It does not grant rights to third-party material incorporated into, referenced by, or used to construct the datasets.
 
