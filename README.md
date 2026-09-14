@@ -41,9 +41,7 @@ pharmaceutical_properties_and_environmental_fate/
 
 ```
 
-The complete input workbook `SM_2.xlsx` is **not publicly included in the repository** because it contains third-party-derived information subject to source-specific licensing and redistribution conditions.
-
-The full workbook is available from the authors **upon reasonable request**, subject to applicable licensing and redistribution restrictions.
+SM_2.xlsx is included in this repository. It contains the reference/classification table (Table SM_2.1), the harmonised datasets (Tables SM_2.5–SM_2.6), and all derived analytical tables (Tables SM_2.4, SM_2.7–SM_2.11). The raw extracted records (Tables SM_2.2–SM_2.3) incorporate third-party database values subject to source-specific licensing terms and are provided as placeholders; the complete raw workbook is available from the corresponding author on reasonable request, with source and provenance retained in the tables (see LICENSE-data.md).
 
 The `figures/` directory and derived Excel workbooks are generated when the pipeline is executed.
 
