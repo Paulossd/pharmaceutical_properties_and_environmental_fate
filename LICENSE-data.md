@@ -18,11 +18,9 @@ Source and provenance information are retained in the corresponding data tables 
 
 ## Complete SM_2 dataset
 
-The complete SM_2 dataset used in the analyses is **not publicly redistributed with this repository** because it contains information derived from third-party sources for which redistribution rights may be restricted or subject to source-specific terms.
+SM_2.xlsx is included in this repository, containing the reference table, the harmonised datasets, and the derived analytical tables. The raw extracted records (Tables SM_2.2–SM_2.3), which incorporate values derived from third-party sources subject to source-specific terms, are provided as placeholders; the complete raw workbook may be provided by the authors upon reasonable request, subject to applicable copyright, database rights, licensing terms, and redistribution conditions.
 
-The complete SM_2 file, including the underlying extracted records and associated data tables, may be provided by the authors **upon reasonable request**, subject to applicable copyright, database rights, licensing terms, and redistribution conditions governing the included third-party material.
-
-Provision of the complete SM_2 dataset upon request does not constitute a grant of redistribution rights for third-party material. Any recipient remains responsible for complying with the applicable terms of the original sources.
+Neither inclusion of the harmonised and derived tables here, nor provision of the complete raw workbook upon request, constitutes a grant of redistribution rights for third-party material. The source and provenance of third-party-derived values are retained in the corresponding tables, and any recipient remains responsible for complying with the applicable terms of the original sources.
 
 ## Publicly available author-generated material
 
