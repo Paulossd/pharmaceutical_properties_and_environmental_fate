@@ -2,7 +2,7 @@
 
 ## Scope
 
-Unless otherwise stated, original data compilations, harmonised datasets, derived analytical outputs, metadata, and other original data products created by Paolo Tufoni and Luís M. Nunes and explicitly identified as author-generated material in this repository are made available under the **Creative Commons Attribution 4.0 International License (CC BY 4.0)**.
+Unless otherwise stated, original data compilations, harmonised datasets, derived analytical outputs, metadata, and other original data products created by Paolo Tufoni, José Paulo Monteiro and Luís M. Nunes and explicitly identified as author-generated material in this repository are made available under the **Creative Commons Attribution 4.0 International License (CC BY 4.0)**.
 
 Copyright © 2026 Paolo Tufoni, José Paulo Monteiro and Luís Miguel Nunes.
 
@@ -35,7 +35,7 @@ These permissions are subject to the terms of the CC BY 4.0 license.
 
 ## Attribution
 
-For material covered by CC BY 4.0, appropriate credit must be given to Paolo Tufoni and Luís M. Nunes, a link to the CC BY 4.0 license must be provided, and any changes must be indicated.
+For material covered by CC BY 4.0, appropriate credit must be given to Paolo Tufoni, José Paulo Monteiro and Luís M. Nunes, a link to the CC BY 4.0 license must be provided, and any changes must be indicated.
 
 Users must not imply that the authors endorse their use of the material.
 
