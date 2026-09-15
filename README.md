@@ -1,6 +1,6 @@
-# Pharmaceutical compounds at the surface water–groundwater interface: a systematic evidence synthesis of their properties and fate at the hyporheic zone
+# The hyporheic zone as a reactive control on pharmaceutical fate and groundwater vulnerability: a systematic evidence synthesis across the surface water–groundwater interface
 
-Reproducible analysis pipeline and supporting materials for the systematic evidence synthesis by **Tufoni & Nunes**.
+Reproducible analysis pipeline and supporting materials for the systematic evidence synthesis by **Tufoni, Monteiro & Nunes**.
 
 ## Overview
 
@@ -269,7 +269,7 @@ Such material is **not relicensed under CC BY 4.0 or the MIT License by this rep
 If you use the analysis pipeline, please cite the associated article:
 
 **Tufoni, P., Monteiro, J. P.,  & Nunes, L. M.**
-*Pharmaceutical compounds at the surface water–groundwater interface: a systematic evidence synthesis of their properties and fate at the hyporheic zone.*
+*The hyporheic zone as a reactive control on pharmaceutical fate and groundwater vulnerability: a systematic evidence synthesis across the surface water–groundwater interface.*
 
 
 
