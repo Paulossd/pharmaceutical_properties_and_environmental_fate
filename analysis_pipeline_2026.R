@@ -4107,3 +4107,136 @@ if (isTRUE(integrity$n[1] > 0))
 base::message("Analysis complete.")
 
 STAGE("DONE  all sections completed")
+
+## ===========================================================================
+## 13.  REDOX CONTRAST IN PERSISTENCE
+##     For compounds with paired aerobic AND anoxic median half-lives, compute
+##     the ratio t_half_anoxic / t_half_aerobic (>1 = more persistent under
+##     reducing conditions). Descriptive comparison of half-lives; no kinetic
+##     transformation, no timescale metrics. Reads SM_4_fate.xlsx.
+## ===========================================================================
+suppressPackageStartupMessages({library(openxlsx); library(readxl); library(ggplot2)})
+
+if (!exists("out_dir")) out_dir <- getwd()
+if (!exists("fig_dir")) { fig_dir <- file.path(out_dir, "figures"); dir.create(fig_dir, showWarnings = FALSE, recursive = TRUE) }
+sm4 <- file.path(out_dir, "SM_4_fate.xlsx")
+stopifnot(file.exists(sm4))
+
+bc  <- readxl::read_excel(sm4, sheet = "Harmonized_By_Compound")
+aer <- suppressWarnings(as.numeric(bc[["half_life_aerobic_median"]]))
+ano <- suppressWarnings(as.numeric(bc[["half_life_anoxic_median"]]))
+ok  <- is.finite(aer) & is.finite(ano) & aer > 0 & ano > 0
+
+redox <- data.frame(
+  compound          = bc[[1]][ok],
+  t_half_aerobic_d  = aer[ok],
+  t_half_anoxic_d   = ano[ok],
+  redox_ratio_anoxic_over_aerobic = ano[ok] / aer[ok])
+redox <- redox[order(redox$redox_ratio_anoxic_over_aerobic), ]
+
+## --- write table ---
+wb <- openxlsx::createWorkbook(); add <- function(n,d){ openxlsx::addWorksheet(wb,n); openxlsx::writeData(wb,n,d) }
+add("ReadMe", data.frame(Note = c(
+  "Table SM_2.12 — Redox contrast in persistence.",
+  "redox_ratio = t_half_anoxic / t_half_aerobic, per compound, from harmonised median half-lives.",
+  "Ratio > 1: greater persistence (slower dissipation) under reducing than oxic conditions.",
+  "Computed only where both aerobic and anoxic medians exist; no imputation.",
+  "Descriptive comparison of half-lives; not a kinetic rate, timescale, or residence time.")))
+add("Redox_contrast", redox)
+openxlsx::saveWorkbook(wb, file.path(out_dir, "Table_SM_2.12_redox_contrast.xlsx"), overwrite = TRUE)
+
+## --- figure: redox contrast (Figure 8) ---
+rc <- redox
+rc$compound <- factor(rc$compound, levels = rc$compound)
+rc$dir <- ifelse(rc$redox_ratio_anoxic_over_aerobic >= 1, "anoxic slower", "oxic slower")
+p <- ggplot(rc, aes(redox_ratio_anoxic_over_aerobic, compound, colour = dir)) +
+  geom_vline(xintercept = 1, linetype = "dashed", colour = "grey50") +
+  geom_segment(aes(x = 1, xend = redox_ratio_anoxic_over_aerobic, yend = compound), colour = "grey80") +
+  geom_point(size = 2.8) +
+  scale_x_log10() +
+  scale_colour_manual(values = c("anoxic slower" = "#2F6DB5", "oxic slower" = "#C0503F"), name = NULL) +
+  labs(x = expression(t[1/2*",anoxic"] / t[1/2*",aerobic"]),
+       y = NULL, title = "Redox contrast in persistence",
+       caption = "Ratio > 1: greater persistence under reducing conditions. Half-life comparison; not a rate or residence time.") +
+  theme_bw(base_size = 11) + theme(legend.position = "bottom")
+fp <- file.path(fig_dir, "Figure_8_redox_contrast.png")
+tryCatch(ggplot2::ggsave(fp, p, width = 6.3, height = 4.0, dpi = 300),
+         error = function(e) { png(fp, 1890, 1200, res = 300); print(p); dev.off() })
+
+message("Section 8 (redox contrast) complete: Table_SM_2.12_redox_contrast.xlsx + Figure_8 written.")
+
+## ===========================================================================
+## 14.  PROVENANCE STRATIFICATION OF PERSISTENCE ESTIMATES
+##     From Table_SM_2.10 (one t½ record per row, tagged Lab/Field/Database,
+##     with compartment and class). Resolves (a) provenance composition and
+##     (b) database-vs-measured median-t½ ratio, by compartment and by class.
+##     Descriptive characterisation of the compiled evidence; no new parameters.
+##     Writes a table only (no figure).
+## ===========================================================================
+suppressPackageStartupMessages({library(openxlsx); library(readxl)})
+
+if (!exists("out_dir")) out_dir <- getwd()
+
+## locate Table_SM_2.10 (written by the pipeline, or alongside SM_2)
+t10_path <- NULL
+for (p in c(file.path(out_dir, "Table_SM_2.10.xlsx"),
+            file.path(out_dir, "Table_SM_2_10.xlsx"),
+            "Table_SM_2.10.xlsx", "Table_SM_2_10.xlsx")) if (file.exists(p)) { t10_path <- p; break }
+stopifnot(!is.null(t10_path))
+
+raw <- readxl::read_excel(t10_path)
+## columns by position: 1 class, 2 compound, 3 compartment, 4 t_half, 5 type, 6 ref
+d <- data.frame(
+  class       = raw[[1]],
+  compound    = raw[[2]],
+  compartment = raw[[3]],
+  t_half      = suppressWarnings(as.numeric(raw[[4]])),
+  type        = as.character(raw[[5]]),
+  stringsAsFactors = FALSE)
+d <- d[is.finite(d$t_half) & d$t_half > 0 & !is.na(d$type), ]
+d$grp <- ifelse(grepl("database|epi", d$type, ignore.case = TRUE), "Database", "Measured")
+
+MIN_N <- 3  # minimum records per group for a reported ratio
+
+## --- 14A. provenance composition + ratio BY COMPARTMENT ---
+by_comp <- do.call(rbind, lapply(split(d, d$compartment), function(g){
+  n_lab   <- sum(grepl("lab",    g$type, ignore.case = TRUE))
+  n_field <- sum(grepl("field",  g$type, ignore.case = TRUE))
+  n_db    <- sum(g$grp == "Database")
+  me <- g$t_half[g$grp == "Measured"]; db <- g$t_half[g$grp == "Database"]
+  data.frame(
+    compartment = g$compartment[1], N = nrow(g),
+    pct_lab = round(100*n_lab/nrow(g)), pct_field = round(100*n_field/nrow(g)),
+    pct_database = round(100*n_db/nrow(g)),
+    n_measured = length(me), median_measured_d = if(length(me)) median(me) else NA,
+    n_database = length(db), median_database_d = if(length(db)) median(db) else NA,
+    ratio_db_over_meas = if (length(me) >= MIN_N && length(db) >= MIN_N)
+                           round(median(db)/median(me), 2) else NA)
+}))
+by_comp <- by_comp[order(-by_comp$N), ]
+
+## --- 14B. database-vs-measured ratio BY CLASS ---
+by_class <- do.call(rbind, lapply(split(d, d$class), function(g){
+  me <- g$t_half[g$grp == "Measured"]; db <- g$t_half[g$grp == "Database"]
+  if (length(me) >= MIN_N && length(db) >= MIN_N)
+    data.frame(class = g$class[1], n_measured = length(me), median_measured_d = round(median(me),2),
+               n_database = length(db), median_database_d = round(median(db),2),
+               ratio_db_over_meas = round(median(db)/median(me), 2))
+  else NULL
+}))
+if (!is.null(by_class)) by_class <- by_class[order(-by_class$ratio_db_over_meas), ]
+
+## --- 14C. write table ---
+wb <- openxlsx::createWorkbook(); add <- function(n,df){ openxlsx::addWorksheet(wb,n); openxlsx::writeData(wb,n,df) }
+add("ReadMe", data.frame(Note = c(
+  "Table SM_2.13 — Provenance stratification of persistence estimates (from Table SM_2.10).",
+  "grp: Measured = Lab + Field; Database = EPI Suite / database-derived.",
+  "ratio_db_over_meas = median(Database t_half) / median(Measured t_half), reported only where",
+  sprintf("each group has >= %d records.", MIN_N),
+  "By-class ratios rest on small counts and reflect dispersion, not precise class factors.",
+  "Descriptive characterisation of the compiled evidence; not a claim about true half-lives.")))
+add("By_compartment", by_comp)
+if (!is.null(by_class)) add("By_class", by_class)
+openxlsx::saveWorkbook(wb, file.path(out_dir, "Table_SM_2.13_provenance_stratification.xlsx"), overwrite = TRUE)
+
+message("Section 9 complete: Table_SM_2.13_provenance_stratification.xlsx written (no figure).")
