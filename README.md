@@ -174,7 +174,11 @@ A complete execution generates the following analytical products:
 | `Table_SM_2.9.xlsx` / `_a` | Persistence screening, estimate/study-level sensitivity analyses, regulatory P/M/B screening, and axis-provenance information                |
 | `Table_SM_2.10.xlsx`       | Long-format half-life lineage with provenance information                                                                                    |
 | `Table_SM_2.11.xlsx`       | Half-life ratio analyses                                                                                                                     |
-| `Table_SM_2.1_a.xlsx`      | Geographic and bibliometric reconciliation                                                                                                   |
+| `Table_SM_2.12_redox_contrast.xlsx` | Anoxic/aerobic median half-life ratio per compound (redox contrast in persistence) 
+
+| `Table_SM_2.13_provenance_stratification.xlsx` | Provenance composition and database-vs-measured median half-life ratio, by compartment and therapeutic class
+
+| `Table_SM_2.1_a.xlsx`      | Geographic and bibliometric reconciliation                                                                                                   |         |
 | `SM_3_properties.xlsx`     | Descriptive statistics for the six physicochemical descriptors under HAR and AGG weighting                                                   |
 | `SM_4_fate.xlsx`           | Descriptive statistics for the six half-life variables and censored concentration statistics                                                 |
 | `figures/`                 | Generated boxplots and synthesis figures                                                                                                     |
@@ -212,6 +216,8 @@ Results are reported using two aggregation schemes:
 Class-level and compound-level concentration estimates are calculated only when the predefined minimum-data criteria are satisfied.
 
 Quantiles are calculated using the **type-7 quantile estimator** implemented in R.
+
+Two additional descriptive analyses are derived from the harmonised half-life records: a redox contrast (the ratio of anoxic to aerobic median half-life per compound, `Table_SM_2.12`) and a provenance stratification (the composition of field-, laboratory-, and database-derived records, and the ratio of database-derived to measured median half-life, resolved by compartment and therapeutic class, `Table_SM_2.13`). Both are computed only where the required paired or minimum-count data are available, without imputation, and are kept separate from the censored concentration datasets.
 
 The complete harmonisation, censoring, aggregation, screening, and statistical procedures are defined in the manuscript and associated Supplementary Material.
 
