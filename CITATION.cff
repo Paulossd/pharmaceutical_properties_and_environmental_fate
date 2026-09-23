@@ -7,7 +7,7 @@ authors:
     given-names: Paolo
   - family-names: Monteiro
     given-names: José Paulo
-- family-names: Nunes
+  - family-names: Nunes
     given-names: Luís Miguel
 
 repository-code: "https://github.com/Paulossd/pharmaceutical_properties_and_environmental_fate"
